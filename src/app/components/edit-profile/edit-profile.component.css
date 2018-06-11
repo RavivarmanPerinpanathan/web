@@ -1,0 +1,115 @@
+.editProfileContainer h3 {
+color: #383737;
+    font-weight: 400;
+    text-align: center;
+    font-size: 30px;
+}
+
+md-input-container {
+
+    display: block;
+}
+
+.mat-raised-button.mat-primary {
+ 
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #555;
+    background-color: #3b882d;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #555;
+    color: white;
+    border: none;
+    width: 105px;
+    height: 32px;
+    float: right;
+    top: 20px;
+    left: 5px;
+    text-align: 5px;
+    line-height: 0px;
+ }
+
+ .label-file {
+    cursor: pointer;
+    color: #b90707;
+    font-weight: bold;
+width: 170px;
+     opacity: 0;
+   
+  
+}
+.label-file:hover {
+    color: #3b5998;
+}
+
+.input-file {
+    display: none;
+}
+
+.cdk-overlay-pane{
+    bottom: 0px !important;
+}
+
+#saveme{
+    background-color: #3b882d;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #555;
+    color: white;
+    border: none;
+    width: 105px;
+    height: 32px;
+    float: right;
+}
+
+#alert{
+  position: relative;
+    font-size: smaller;
+    font-size: 12px;
+    text-align: center;
+    width: 100% !important;
+
+    color: #9e3232;
+}
+
+#info{
+    font-size: 18px;
+    text-align: center;
+    position: relative;
+   font-weight: bold;
+}
+
+#bruh{
+    background-color: red;
+}
+
+#newphoto{
+        position: absolute;
+    font-size: 50px;
+    left: 60px;
+}
+
+#nphoto{
+    margin-bottom: 10px;
+    text-align: left;
+    /* background-color: red; */
+    position: absolute;
+    /* top: 2px; */
+    margin-top: 47px;
+    font-size: 9px;
+    left: 47px;
+}
+
+.mat-select-trigger{
+    display: flex;
+    align-items: center;
+    height: 30px;
+    min-width: 112px;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    right: 20px;
+}
+
+#fr{
+    position: relative;
+    right: 50px;
+}

@@ -1,0 +1,107 @@
+#brut{
+  background-color: #fafafa;
+  color: black;
+  float: right;
+  height: 34px;
+  font-size: 14px;
+}
+
+#name{
+  color: #fafafa;
+  background-color: rgba(0,0,0,.2);
+  height: 20px;
+  border-radius: 3px;
+}
+
+#title{
+  font-size: 2.2rem;
+  line-height: 110%;
+  margin: 2.1rem 0 1.68rem 0;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  top: 21px;
+  color: #6e6e6e;
+}
+
+.container{
+  width: unset !important;
+}
+
+.rating-author-picture{
+display: inline-block;
+height: 48px;
+width: 48px;
+border-radius: 50%;
+object-fit: cover;
+position: relative;
+top: 15px;
+}
+
+.onelinestyle{
+  display: inline-block;
+  text-transform: capitalize;
+
+}
+
+.seperate_line{
+  border-bottom: 1px solid #DBDBDB !important;
+}
+
+  .button {
+  background-color: forestgreen;
+  box-shadow: 1px 1px 11px #555;
+  width: 20%;
+  box-sizing: border-box;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  vertical-align: baseline;
+  text-align: center;
+  margin: 0;
+  min-width: 88px;
+  line-height: 36px;
+  padding: 0 16px;
+  border-radius: 2px;
+}
+
+.rating-message{
+  margin-left: 50px;
+}
+
+ .star-ratings-sprite {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+  font-size: 0;
+  height: 21px;
+  line-height: 0;
+  overflow: hidden;
+  text-indent: -999em;
+  width: 110px;
+  margin: 0 auto;
+}
+  
+.star-ratings-sprite-rating {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/2605/star-rating-sprite.png") repeat-x;
+  background-position: 0 100%;
+  float: left;
+  height: 21px;
+  display:block;
+}
+
+.checked {
+    color: orange;
+}
+
+.star{
+    text-align: center;
+    margin-top: 5%;
+}

@@ -1,0 +1,8 @@
+.button-add-fab {
+
+    color: white;
+    display: inline-block;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+}

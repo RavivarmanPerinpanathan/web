@@ -1,0 +1,90 @@
+<md-tab-group (selectChange)="onSelectChange($event.tab.textLabel)">
+    <md-tab label="Events"></md-tab>
+    <md-tab label="Coachings"></md-tab>
+</md-tab-group>
+
+<div class="seachtools">
+    <div class="inlinef" style="">
+        <input placeholder="Name" type="text" [(ngModel)]="searchParameters.name" />
+    </div>
+    <div class="inlinef">
+        <div [style.border]="distanceInput.disabled ? 'solid 1px red' : ''">
+            <input #distanceInput [disabled]="!canSearchByDistance" placeholder="distance" type="number" [(ngModel)]="searchParameters.distance" />
+            <span style="color: red;" *ngIf="distanceInput.disabled">We need access to your location to provide this functionality</span>
+        </div>
+    </div>
+    <div class="inlinef">
+    <button mdSuffix [mdDatepickerToggle]="pickerAfter"></button>
+        <div style="margin-top: -10px;">
+        <md-datepicker #pickerAfter></md-datepicker>
+        <input mdInput [mdDatepicker]="pickerAfter" [(ngModel)]="searchParameters.afterDate" placeholder="After Date">
+        </div>
+    </div>
+    <div class="inlinef">
+    <button mdSuffix [mdDatepickerToggle]="pickerBefore"></button>
+        <div style="margin-top: -10px;">
+        <md-datepicker #pickerBefore></md-datepicker>
+        <input mdInput [mdDatepicker]="pickerBefore" [(ngModel)]="searchParameters.beforeDate" placeholder="Before Date">
+        </div>
+    </div>
+
+
+
+
+<div class="inlinef">
+    <md-select  placeholder="Sport" [(ngModel)]="searchParameters.sport">
+        <md-option [value]="">
+            Select a Sport
+        </md-option>
+        <md-option *ngFor="let sport of sports" [value]="sport.id">
+            {{ sport.name }}
+        </md-option>
+    </md-select>
+    
+</div>
+
+<div class="inlinef">
+<div class="checkboxx" style="margin-bottom: 0px;">
+        <md-checkbox [(ngModel)]="searchParameters.favoriteSports">Favorite sports only</md-checkbox>
+        <br>
+        <md-checkbox [(ngModel)]="searchParameters.withFriends">With friends only</md-checkbox>
+    </div>
+</div>
+
+<div class="inlinef">
+    <md-select placeholder="Sort By" [(ngModel)]="searchParameters.sortBy">
+        <md-option *ngFor="let sortBy of sortByList" [value]="sortBy">
+            {{ sortBy }}
+        </md-option>
+    </md-select>
+</div>
+<div class="inlinef">
+    <md-select placeholder="Sort Direction" [(ngModel)]="searchParameters.sortDirection">
+        <md-option *ngFor="let sortDirection of sortDirectionList" [value]="sortDirection">
+            {{ sortDirection }}
+        </md-option>
+    </md-select>
+</div>
+
+</div>
+
+  <div class="recherche">   
+<button id="seachbtn" md-raised-button color="primary" (click)="getList(1, true)"><i class="material-icons">search</i></button>
+  </div>
+
+<div class="row">
+    <div *ngFor="let item of list">
+        <div class="col s12 m6 l4">
+            <app-event-card [event]="item"></app-event-card>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <ul class="pagination">
+        <li [class.waves-effect]="i + 1 != currentPage" [class.active]="i + 1 == currentPage" *ngFor="let p of [].constructor(totalPages) ; let i = index">
+            <a style="cursor: pointer;" (click)="getList(i + 1);">
+                {{ i + 1 }}
+            </a>
+        </li>
+    </ul>
+</div>

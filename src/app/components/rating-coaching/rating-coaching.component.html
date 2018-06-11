@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div id="cont" class="container">
+  <h1 id="title">Rating</h1>
+  <div style="max-height: 85vh; width: 700px;">
+    <div class="col s12 m3 l3">
+     <!-- <button class="button" (click)="getEval()">Click</button> -->
+      <div class="seperate_line">
+        <div>
+            <!--div class="star-ratings-sprite">
+              <span style="width:{{score}}%;" class="star-ratings-sprite-rating"></span>
+            </div-->
+            <div class="star" *ngIf="this.score == 1" >
+              <span class="fa fa-star checked fa-3x" ></span>
+              <span class="fa fa-star fa-3x"></span>
+              <span class="fa fa-star fa-3x"></span>
+              <span class="fa fa-star fa-3x"></span>
+              <span class="fa fa-star fa-3x"></span>
+            </div>
+            <div class="star" *ngIf="this.score == 2">
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star fa-3x"></span>
+              <span class="fa fa-star fa-3x"></span>
+              <span class="fa fa-star fa-3x"></span>
+            </div>
+            <div class="star" *ngIf="this.score == 3">
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star fa-3x"></span>
+              <span class="fa fa-star fa-3x"></span>
+            </div>
+            <div class="star" *ngIf="this.score == 4">
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star fa-3x"></span>
+            </div>
+            <div class="star" *ngIf="this.score == 5">
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star checked fa-3x"></span>
+              <span class="fa fa-star checked fa-3x"></span>
+            </div>
+          <hr/>
+        </div>
+      </div>
+      <div  class="">
+        <div class="seperate_line" *ngFor="let rating of ratinglist">
+          <p class="onelinestyle">{{rating.note}}/5</p>
+          <img class="rating-author-picture" src="{{rating.user.picture}}">
+          <p class="onelinestyle">{{rating.user.username}} </p>
+          <p class="rating-message">{{ rating.comment }}</p>
+          <hr/>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<md-tab-group (selectChange)="onSelectChange($event.tab.textLabel)">
+    <md-tab label="Events"></md-tab>
+    <md-tab label="Coachings"></md-tab>
+</md-tab-group>
+
+<app-event-list *ngIf="userLogged && listWithFriends?.length > 0" [events]="listWithFriends" [title]="currentResource + ' with Friends'"></app-event-list>
+<app-event-list *ngIf="userLogged && favoriteSportsList?.length > 0" [events]="favoriteSportsList" [title]="currentResource + ' of your favorite sports'"></app-event-list>
+
+<app-event-list *ngIf="upcomingList?.length > 0" [events]="upcomingList" [title]="'Upcoming ' + currentResource"></app-event-list>
+<app-event-list *ngIf="showNearList && nearList?.length > 0" [events]="nearList" [title]="'Closest ' + currentResource"></app-event-list>

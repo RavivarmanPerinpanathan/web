@@ -1,0 +1,66 @@
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Event} from '../../models/event';
+import {EventService} from "../../services/event.service";
+import {Paginable} from "../../class/Paginable";
+
+import {ApiConstants} from "../../constants/ApiConstants";
+
+import * as io from 'socket.io-client';
+
+@Component({
+    selector: 'app-event-carousel',
+    templateUrl: './event-carousel.component.html',
+    styleUrls: ['./event-carousel.component.css']
+})
+export class EventCarouselComponent implements OnInit, OnDestroy {
+    events: Event[] = [];
+    selectedEvent: Event = null;
+    currentPage: number;
+    totalPages: number;
+
+    socket: any = null;
+
+    constructor(private eventService: EventService) {
+    }
+
+    addEventRealTime = (eventJson: Object) => {
+
+        console.log('realtime event id: ' + eventJson['id']);
+        if (this.events.map((item) => {
+                return item.id;
+            }).indexOf(eventJson['id']) === -1) {
+            const newEvent: Event = new Event().deserialize(eventJson);
+            this.events = this.events.slice(0, -1);
+            this.events.unshift(newEvent);
+        }
+    };
+
+    ngOnInit(): void {
+        this.getEventList();
+        this.socket = io(ApiConstants.REALTIME_ENDPOINT);
+        this.socket.emit('message', {msg: 'I just connected from angular4'});
+
+        this.socket.on('newEvent', this.addEventRealTime);
+    }
+
+    ngOnDestroy(): void {
+        this.socket.emit('message', {msg: 'Gonna disconnect from angular4'});
+        console.log("ngOnDestroy: gonna disco from socket");
+        this.socket.disconnect();
+    }
+
+    getEventList = (page: number = 1, limit: number = 4) => {
+
+        if (page === this.currentPage) {
+            return;
+        }
+        this.eventService.getEvents(page, limit, "id", "desc").subscribe((pagination: Paginable) => {
+            this.events = pagination.data;
+            this.currentPage = page;
+            this.totalPages = pagination.totalPages;
+
+            console.log(pagination.toString());
+        }, (error) => console.error(error));
+    };
+
+}

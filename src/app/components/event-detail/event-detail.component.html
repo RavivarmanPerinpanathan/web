@@ -1,0 +1,196 @@
+<div style="max-height: 85vh;   width: 1080px;">
+
+  <div class="col s12 m3 l3">
+    <div class="card">
+      <div class="card-image" *ngIf="toShow" [ngStyle]="{'background-image': 'url(' + toShow?.picture + ')'}"
+           style="background-size:cover;background-position:center; height:300px;">
+      </div>
+      <div class="card-content">
+        <div class="seperate_line" style="margin-bottom: 25px;">
+                <span class="card-title">
+                {{toShow?.name}}
+
+                </span>
+
+          <div class="chip creator_photo">
+            <img src="{{toShow?.owner.picture}}" alt="Contact Person" (click)="goToUserProfile(toShow?.owner)"><span (click)="goToUserProfile(toShow?.owner)">{{toShow?.owner.username}}</span>
+          </div>
+          <i class="material-icons">directions_run</i> {{toShow?.sport.name}}
+        </div>
+        <div class="seperate_line">
+          <i class="material-icons">date_range</i>
+          {{toShow?.date | date : "yyyy-MM-dd HH:mm"}}   <span *ngIf="toShow && !toShow.noPlaceLimit"> | Places left: {{ toShow?.places - toShow?.userCount }}/{{toShow?.places}}</span>
+          <i class="material-icons">place</i>{{toShow?.location}}  <i class="material-icons">time_to_leave</i>
+          <app-async-distance [distanceHolder]="toShow"></app-async-distance>
+          <br>
+        </div>
+        <div class="seperate_line">
+
+          <p style="display: inline-flex;">Registered Users: </p>
+          <div  style="display: inline-flex;" *ngIf="toShow && toShow.registeredUsers">
+            <i class="material-icons pointer" [mdMenuTriggerFor]="registeredUsersList">person</i>
+            <md-menu #registeredUsersList>
+              <div class="chip clickableCursor new-chip" style="width: 260px;"   *ngFor="let regUser of toShow.registeredUsers">
+                <i (click)="addfriends(regUser.id)" class="Tiny material-icons right">add</i>
+                <img src="{{regUser.picture}}" (click)="goToUserProfile(regUser)"><p (click)="goToUserProfile(regUser)">{{regUser.username}}</p>
+
+              </div>
+              <br>
+            </md-menu>
+          </div>
+
+          <p style="display: inline-flex;">Registered Friends: </p>
+          <div style="display: inline-flex;" *ngIf="toShow && toShow.registeredFriends">
+            <i class="material-icons pointer" [mdMenuTriggerFor]="registeredFriendList">group</i>
+            <md-menu #registeredFriendList>
+              <div class="chip" *ngFor="let friend of toShow.registeredFriends">
+                <img src="{{friend.picture}}" (click)="goToUserProfile(friend)"><span (click)="goToUserProfile(friend)">{{friend.username}}</span>
+              </div>
+              <br>
+            </md-menu>
+          </div>
+          <p style="display: inline-flex;" *ngIf="state_event" > Available Items : </p>
+          <div style="display: inline-flex;" *ngIf="state_event" (click)="display_Rentable_items()"> <!--mode degeu -->
+            <i class="material-icons pointer" [mdMenuTriggerFor]="itemsList" >shopping_basket</i>
+            <md-menu #itemsList>
+              <!---------------------------- display items that i want to share -------------------------------------->
+              <div *ngIf="canEdit && !toShow?.isRegistered">
+                <div class="chip clickableCursor" *ngFor="let item of items">
+                  <img src="{{item.thumbnail}}">{{item.name}}
+                  <i  (click)="add_itemsToEvent(item.id)" class="Small material-icons">add_circle</i>
+                  <!--<i *ngIf=""  class="Small material-icons">cancel</i>-->
+                </div>
+              </div>
+              <!---------------------------- display rentable items -------------------------------------->
+              <div *ngIf=" !canEdit && toShow?.isRegistered" >
+                <div class="chip clickableCursor" *ngFor="let item2 of rentable_items">
+                  <img src="{{item2.rent.thumbnail}}">{{item2.rent.name}}
+                  {{item2.rent.price}}<i class="Small material-icons" >euro_symbol </i>
+                  <i *ngIf="!item2.renter" (click)="rentItems(item2.id, item2.rent.price)" class="Small material-icons">add_circle</i>
+                  <i *ngIf="item2.renter" (click)="unrentItems(item2.renter.id)" class="Small material-icons">cancel</i>
+                </div>
+              </div>
+            </md-menu>
+          </div>
+          <!---------------------------- display renter -------------------------------------->
+          <div>
+            <div style="display: inline-flex;" *ngIf="state_event" >
+                <div *ngIf="canEdit && !toShow?.isRegistered" (click)="display_Rentable_items()">
+                  <p style="display: inline-flex;" *ngIf="state_event" > People had rent : </p>
+                  <i class="material-icons pointer" [mdMenuTriggerFor]="renterList" >payment</i>
+                  <md-menu #renterList>
+                  <div  *ngFor="let renter_pp of rentable_items">
+                    <div class="chip clickableCursor" *ngIf="renter_pp.renter ">
+
+                      {{renter_pp.renter.user.username}} <img src="{{renter_pp.renter.user.picture}}"> rent :
+                      <img src="{{renter_pp.rent.thumbnail}}"><i>{{renter_pp.rent.name}}</i>
+                      <div *ngIf="!renter_pp.renter"> nothing rent</div>
+                    </div>
+                  </div>
+                  </md-menu>
+                </div>
+            </div>
+          </div>
+          <!---------------------------- display renter end-------------------------------------->
+
+        </div>
+
+        <div class="seperate_line">
+          <i class="material-icons">description</i>
+          {{toShow?.description}}
+        </div>
+
+        <!-- available coaching items area starting -->
+
+        <!--- available coaching items area ending -->
+
+        <!-- evaluate coach area starting -->
+
+        <!--<div>
+          <md-select ng-model="myOption" >
+            <md-option (click)="logDropdown(option)"  ng-value="option" *ngFor="let option of optionLists">{{option.id}}</md-option>
+          </md-select>
+        </div>-->
+        <div class="card-action">
+          <div *ngIf="userLogged" style="float: right;">
+            <div *ngIf="toShow?.owner.id != this.userService.currentUser.id">
+            <button *ngIf="!toShow?.isRegistered && (toShow?.noPlaceLimit || toShow?.userCount < toShow?.places)"
+                    (click)="register(toShow)" md-raised-button color="accent">
+              Register
+            </button>
+            <button *ngIf="toShow?.isRegistered" (click)="unregister(toShow)" md-raised-button color="warn">
+              Unregister
+            </button>
+          </div>
+            <button style="margin-left: 5px;" *ngIf="!toShow?.noPlaceLimit && toShow?.userCount >= toShow?.places"
+                    md-raised-button color="warn">
+              FULL
+            </button>
+            <div *ngIf="canEdit" class="right">
+              <button md-raised-button color="primary" (click)="editItem()">Edit</button>
+              <button md-raised-button color="warn" (click)="deleteItem()">Delete</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- evalute coach area ending-->
+
+    <!-- Comment area starting -->
+    <div>
+      <div *ngIf="userLogged" class="comment-box">
+
+        <input style="width:99%;" ref-textarea [(ngModel)]="textValue" type="text" placeholder="COMMENT..." ><br>
+        <button class="comment-button-style" id="comment-button-style" *ngIf="userLogged" (click)="addcomment(textarea.value)" (click)="textValue=''">
+          Add Comment
+        </button>
+      </div>
+
+      <div *ngIf="toShow?.isRegistered" class="notation-box">
+        <div *ngIf="state_event != 'Event'">
+
+           <input style="width:99%;" ref-textarea [(ngModel)]="comment_coach" type="text" placeholder="NOTATION..."  ><br>
+          <div class="notation-and-send">
+            <md-select  class="col s3" [(ngModel)]="current">
+              <md-option (click)="logDropdown(note.text)" *ngFor="let note of notationLists" [value] ="note.text">{{note.text}}</md-option>
+            </md-select>
+            <button class="comment-button-style" *ngIf="toShow?.isRegistered" (click)="evalcoach(comment_coach)">
+              send
+            </button>
+          </div>
+          <!--<md-select class="col s3" [(ngModel)]="current">
+            <md-option *ngFor="let item of list" value ="item.id">{{item.id}}</md-option>
+          </md-select>-->
+          <!--<md-select  #select [(ngModel)]="current" (change)="logDropdown(note)">
+            <md-option  *ngFor="let note of notationLists" [value]="note.id">{{note.id}}</md-option>
+          </md-select>-->
+
+          <!--  <textarea ref-textarea [(ngModel)]="evaluate" rows="4"></textarea><br/>
+            <button *ngIf="toShow?.isRegistered" (click)="evalcoach(textarea.value)">
+              send
+            </button>-->
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="toShow && toShow.comments && toShow.comments.length" class="card ">
+
+      <div *ngFor="let comment of toShow.comments" class="showcomment">
+        <div>
+          <i *ngIf="userLogged && comment.author.id == this.userService.currentUser.id"   (click)="delete_comment(comment.id)" class="Small material-icons delete-mouse-over">delete_forever</i>
+
+          <img style="margin-left: 10px;" class="author-profile-picture" (click)="goToUserProfile(comment.author)" src="{{comment.author.picture}}">
+          <p class="author-profile-title" (click)="goToUserProfile(comment.author)" >{{comment.author.username}}</p>
+          <p class="author-profile-title">{{comment.created_at | date : "yyyy-MM-dd HH:mm"}}</p>
+        </div>
+        <p class="comment-message">{{ comment.comment }}</p>
+        <hr/>
+      </div>
+    </div>
+
+    <!-- Comment area ending-->
+  </div>
+</div>
+

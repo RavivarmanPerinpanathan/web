@@ -1,0 +1,18 @@
+<div class="loginContainer">
+
+    <div class="logoContainer"><img class="logoImage" src="/assets/logo.png" /></div>
+
+    <form>
+        <md-input-container>
+            <input mdInput placeholder="Username" name="username" type="text" [(ngModel)]="username" >
+        </md-input-container>
+        <md-input-container>
+            <input mdInput placeholder="Password" name="password" type="password" [(ngModel)]="password" >
+        </md-input-container>
+        <button class="button buttonOrange" *ngIf="!loading" (click)="login()">Login</button>
+        <button class="button buttonBlue" *ngIf="!loading" (click)="facebookLogin()">Facebook Login</button>
+        <md-progress-bar *ngIf="loading" mode="indeterminate" color="accent"></md-progress-bar>
+        <a (click)="openResetPasswordDialog()">Forgot your password ?</a>
+    </form>
+</div>
+

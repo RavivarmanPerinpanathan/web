@@ -1,0 +1,30 @@
+<div class="signUpContainer">
+    <h3>Sign Up</h3>
+    <form>
+        <div *ngIf="!successMessage; else success">
+
+            <md-input-container>
+                <input mdInput placeholder="Email" name="email" type="email" [(ngModel)]="email" >
+            </md-input-container>
+
+            <md-input-container>
+                <input mdInput placeholder="Username" name="username" type="text" [(ngModel)]="username" >
+            </md-input-container>
+
+            <md-input-container>
+                <input mdInput placeholder="Password" name="password1" type="password" [(ngModel)]="password1" >
+            </md-input-container>
+
+            <md-input-container>
+                <input mdInput placeholder="Password Confirmation" name="password2" type="password" [(ngModel)]="password2" >
+            </md-input-container>
+
+
+            <button class="button buttonOrange" *ngIf="!loading" (click)="signup()">Register</button>
+            <md-progress-bar *ngIf="loading" mode="indeterminate" color="accent"></md-progress-bar>
+        </div>
+        <ng-template #success>
+            {{ successMessage }}
+        </ng-template>
+    </form>
+</div>

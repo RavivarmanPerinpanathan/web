@@ -1,0 +1,80 @@
+<md-sidenav-container class="sidenav-container">
+
+    <md-sidenav mode="over" #sideNav class="sidenav-menu">
+    <!--<md-sidenav mode="side" #sideNav class="sidenav-menu">-->
+    <!--<md-sidenav mode="push" #sideNav class="sidenav-menu">-->
+        <ul>
+            <li class="clickableCursor" (click)="sideNav.close()" routerLink="/search" routerLinkActive="active">
+                <a>Search</a>
+            </li>
+        </ul>
+    </md-sidenav>
+
+    <md-toolbar mode="over" color="accent" class="toolbar">
+
+        <ul class="inlinef">
+            <li class="valign-wrapper">
+                <span class="sidenav-activator hide-on-med-and-up" (click)="sideNav.toggle()"><i class="material-icons">menu</i></span>
+            </li>
+            <li>
+                <a class="logo" routerLink="/" routerLinkActive="active">
+                    SportHub
+                </a>
+            </li>
+        </ul>
+
+        <ul class="menu-start inlinef hide-on-small-only">
+            <li>
+                <a routerLink="/search" routerLinkActive="active">Search</a>
+            </li>
+        </ul>
+        <ul *ngIf="isLogged" class="menu-start inlinef hide-on-small-only">
+            <li>
+                <a routerLink="/chat" routerLinkActive="active" target="_blank">Chat</a>
+            </li>
+        </ul>
+        <span class="fill-middle-space"></span>
+
+        <ul *ngIf="isLogged" class="right inlinef">
+
+
+          <!------------------- Notification starting -------------------------->
+         <i  id="notif" class="material-icons">new_releases</i>
+          <md-select style="opacity: 0;" class="col s3" [(ngModel)]="current">
+
+             <md-option (click)="notif()" *ngFor="let message of messages" >{{message.message}}</md-option>
+           </md-select>
+
+
+           <!------------------- Notification ending -------------------------->
+
+
+            <li>
+                <a routerLink="/profile" routerLinkActive="active">{{ currentUser?.username }}</a>
+            </li>
+            <li class="clickableCursor">
+                <a (click)="logout()">Logout</a>
+            </li>
+        </ul>
+        <ul *ngIf="!isLogged" class="right inlinef">
+            <li>
+                <a routerLink="/login" routerLinkActive="active">Login</a>
+            </li>
+            <li>
+                <a routerLink="/signup" routerLinkActive="active">Sign Up</a>
+            </li>
+        </ul>
+
+    </md-toolbar>
+
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+
+</md-sidenav-container>
+
+<toaster-container [toasterconfig]="toasterConfig"></toaster-container>
+
+<app-event-create-fab *ngIf="isLogged"></app-event-create-fab>
+
+<app-chat *ngIf="isLogged" style="display:none;"></app-chat>

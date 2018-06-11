@@ -1,0 +1,64 @@
+import {Injectable} from '@angular/core';
+import {Http, URLSearchParams} from '@angular/http';
+
+import {Event} from '../models/event';
+
+import {Paginable} from "../class/Paginable";
+import {Observable} from "rxjs/Observable";
+
+import {ApiConstants} from "../constants/ApiConstants";
+
+import "rxjs/add/operator/map";
+import {UserService} from "./user.service";
+
+
+@Injectable()
+export class EventService {
+
+    constructor(private http: Http, private userService: UserService) {
+    }
+
+    private addCurrentPosition(toSend: URLSearchParams): URLSearchParams {
+
+        const coords = this.userService.getCurrentCoords();
+        if (coords) {
+
+            toSend.set("longitude", coords.longitude.toString());
+            toSend.set("latitude", coords.latitude.toString());
+        } else if (toSend.get("sortBy") === "distance") {
+
+            toSend.delete("sortBy");
+        }
+        return toSend;
+    }
+
+    private httpParametrize(params: Object): URLSearchParams {
+
+        const toSend = new URLSearchParams();
+
+        Object.keys(params).map(key => {
+            if (params[key]) {
+                toSend.set(key, params[key]);
+            }
+        });
+        return this.addCurrentPosition(toSend);
+    }
+
+    getEvents(params: Object): Observable<Paginable> {
+
+        const url = `${ApiConstants.API_ENDPOINT}/events`;
+        return this.http.get(url, {params: this.httpParametrize(params), headers: this.userService.getUserHeaders()})
+            .map(response => {
+
+                const eventList: Event[] = [];
+
+                response.json().forEach(function (value: Object) {
+                    eventList.push(new Event().deserialize(value));
+                });
+                return new Paginable(eventList, parseInt(response.headers.get("totalCount"), 10),
+                    params["page"] ? params["page"] : 1,
+                    params["limit"] ? params["limit"] : 5);
+            });
+    }
+
+}

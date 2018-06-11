@@ -1,0 +1,48 @@
+<div class="editProfileContainer">
+
+    <h3>Edit Profile</h3>
+    <form>
+        <md-input-container>
+            <input id="info" mdInput placeholder="Username" name="username" type="text" [(ngModel)]="toSend.username" >
+        </md-input-container>
+        <md-input-container>
+            <input id="info" mdInput placeholder="Email" name="email" type="email" [(ngModel)]="toSend.email" >
+        </md-input-container>
+        <i id="newphoto" class="material-icons">portrait</i>
+        <p id="nphoto"> Update Profil Picture </p>
+
+        <input  name="picture" appBase64convert name="picture" class="label-file" placeholder="Picture" type="file" (applyConvertedImage)="toSend.picture = $event" />
+        
+        <md-select style="position: relative;right: 35px;
+    top: 25px;" multiple="{{true}}" placeholder="Sport" name="sport" type="sport" [(ngModel)]="toSend.favoriteSports">
+            <md-option *ngFor="let sport of sports" [value]="sport.id">
+                {{ sport.name }}
+            </md-option>
+        </md-select>
+        <button md-raised-button color="primary" (click)="editUser()">SUBMIT</button>
+    </form>
+  <br><br>
+
+  <h3>Edit password</h3>
+  <i id="alert">It's a good idea to use a strong password that you're not using elsewhere !</i>
+  <form>
+    <md-input-container>
+      <input mdInput placeholder="Current Password" name="currentpwd" type="text" [(ngModel)]="currentpwd" >
+    </md-input-container>
+    <br>
+    <md-input-container>
+      <input mdInput placeholder="New Password" name="password1" type="password" [(ngModel)]="password1" >
+    </md-input-container>
+    <br>
+    <md-input-container>
+      <input mdInput placeholder="Confirm password" name="password2" type="password" [(ngModel)]="password2" >
+    </md-input-container>
+    <button id="saveme" data-dismiss="modal" (click)="editPwd()">SAVE</button>
+  </form>
+
+</div>
+
+<script type="text/javascript">
+ 
+
+</script>

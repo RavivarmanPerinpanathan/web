@@ -1,0 +1,33 @@
+
+.row .col.s3 {
+    width: 25%;
+    margin-left: auto;
+    left: auto;
+    right: auto;
+    margin-top: 15px;
+}
+
+button {
+    background-color: rgba(0, 0, 0, 0.18);
+    width: 16%;
+    border: 1px;
+}
+
+.mat-dialog-container {
+    height: 500px !important;
+}
+
+div#cdk-overlay-0 {
+    height: 500px !important;
+}
+
+.cdk-overlay-pane{
+    height: 500px !important;
+
+}
+
+.mat-raised-button.mat-primary{
+    float: right;
+    margin-top: 10px;
+    margin-right: 10px;
+}

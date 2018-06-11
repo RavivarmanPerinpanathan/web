@@ -1,0 +1,92 @@
+/*.chatsContainer {*/
+
+    /*background-color: grey;*/
+    /*position: fixed;*/
+    /*bottom: 0;*/
+    /*display: flex;*/
+/*}*/
+
+.chatItem {
+/*
+    background-color: #b9bdbf61 !important;
+    position: fixed;
+    bottom: 0;
+    display: block;
+       border: solid 1px #d2c8c8;
+    width: 250px;
+  float: right;
+    position: sticky;
+        height: 56px;
+
+
+         background-color: #b9bdbf !important;
+    position: fixed;
+    bottom: 0;
+    display: block;
+    border: solid 1px #d2c8c8;
+   width: 250px;
+    margin-left: 20px;
+    margin-top: 50px;
+*/
+ display: block;
+    background-color: #b9bdbf !important;
+ display: block;
+    position: sticky;
+    bottom: 0px;
+     width: 250px;
+     float: left;
+     margin-left: 10px;
+
+}
+
+.chatTitle {
+    margin: 0;
+     /*height: 55px;*/
+     font-size: 11px;
+}
+
+.chatConv {
+
+   color:black !important;
+   background-color: white;
+}
+
+.chatMessageList {
+
+    height: 250px;
+    overflow-y: scroll;
+    color: black;
+}
+
+.chatMessageSend {
+
+    height: 50px;
+    display: inline-flex;
+    color:black;
+}
+.chatItem p{
+      text-align: center;
+    line-height: 55px;
+    font-family: serif;
+    color: black !important;
+
+}
+
+.btn{
+   background-color: #358661;
+    position: relative;
+    top: 20px;
+    height: 27px;
+    width: 40px;
+    right: -5px;
+    font-size: 12px;
+    line-height: 10px;
+}
+
+.btn p{
+    color: black;
+    position: relative;
+    top: -27px;
+    font-size: 14px;
+    left: -19px;
+}

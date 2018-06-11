@@ -1,0 +1,17 @@
+<h2>{{ title }}</h2>
+<hr>
+<swiper [config]="swiperConfig">
+    <div *ngFor="let event of events">
+        <app-event-card [event]="event"></app-event-card>
+    </div>
+    <div class="card small" [style.height]="'460px'">
+        <div class="card-image">
+        </div>
+        <div class="card-content">
+            <span class="card-title pointer" (click)="loadMore()">Load More</span>
+        </div>
+        <div class="card-action">
+        </div>
+    </div>
+
+</swiper>

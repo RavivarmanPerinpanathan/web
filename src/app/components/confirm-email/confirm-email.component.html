@@ -1,0 +1,6 @@
+<span *ngIf="!message; else done">
+    Processing the informations
+</span>
+<ng-template #done>
+    {{ message }}
+</ng-template>

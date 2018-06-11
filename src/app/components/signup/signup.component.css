@@ -1,0 +1,65 @@
+.signUpContainer {
+
+    max-width: 430px;
+    margin: 15vh auto 0 auto;
+}
+
+.signUpContainer h3 {
+
+    color: #636363;
+    font-weight: 300;
+    text-align: center;
+}
+
+form  {
+
+    padding: 15px !important;
+    background: #fafafa;
+    border: 1px solid #ebebeb;
+    box-shadow: rgba(0,0,0,0.14902) 0px 1px 1px 0px,rgba(0,0,0,0.09804) 0px 1px 2px 0px;
+}
+
+md-input-container {
+
+    display: block;
+}
+
+
+.button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    margin: .3em 0 1em 0;
+    width: 100%;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+    letter-spacing: 1px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
+    transition: all 0.15s ease;
+}
+.button:focus { outline: 0; }
+
+
+/* Button modifiers */
+
+.buttonBlue {
+    background: #4a89dc;
+    border-bottom: 2px solid #ffd740;
+}
+.buttonOrange {
+    background-color: #192d55 !important;
+    background-image: linear-gradient(#1b3a7c, #30497e 50%) !important;
+    border-bottom: 1px solid #254c9f !important;
+    /* background: #224274; */
+    color: rgba(0,0,0,.87) !important;
+}
+
+
+.buttonBlue:hover { background: #357bd8; }

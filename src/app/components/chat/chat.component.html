@@ -1,0 +1,51 @@
+<!--div *ngFor="let chat of chats ; let i = index" class="chatItem">
+    <p class="chatTitle" (click)="currentChat.hidden = !currentChat.hidden">{{ chat.name }}</p>
+    <div class="chatConv" #currentChat [hidden]="true">
+        <div class="chatMessageList" #scrollMe>
+            <p *ngFor="let post of messages[chat.id]">
+                {{ post.toString() }}
+            </p>
+        </div>
+        <div class="chatMessageSend">
+            <input type="text" #inputMessage placeholder="Type something"/>
+            <button class="btn" (click)="sendMessage(inputMessage, chat.id)"><p>Send<p></button>
+        </div>
+    </div>
+</div-->
+<style type="text/css">
+    .chat-picture img{
+        border-radius: 5px;
+        width: 25px;
+        margin-top: -15%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    .chatItem{
+        margin-top: 10px;
+    }
+</style>
+<div *ngFor="let chat of chats ; let i = index" class="chatItem" >
+    <p class="chatTitle" (click)="currentChat.hidden = !currentChat.hidden">{{ chat.name }}</p>
+    <div class="chat-picture chatTitle">
+    <img src="{{chat.users[0].picture}}" style="float: left;height: 30px;">
+    <img src="{{chat.users[1].picture}}" style="float: right; height: 30px;">
+    </div>
+    <div class="chatConv" #currentChat [hidden]="true">
+        <div class="chatMessageList" #scrollMe>
+            <p *ngFor="let post of messages[chat.id]">
+                <span *ngIf="this.chatUserID == post.author.id; else elseBlock" style="color:green !important;">
+                    {{ post.toString() }}
+                    <!--p *ngFor="let chatMessage of chatMessages[chat.id]">
+                        {{chatMessage.toString()}}
+                    </p-->
+                </span>
+                <ng-template #elseBlock style="color:rosybrown !important;"> {{ post.toString() }} </ng-template>
+            </p>
+        </div>
+        <div class="chatMessageSend">
+            <input type="text" #inputMessage placeholder="Type something"/>
+            <button class="btn" (click)="sendMessage(inputMessage, chat.id)"><p>Send<p></button>
+        </div>
+        <br>
+    </div>
+</div>

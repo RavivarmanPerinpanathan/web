@@ -1,0 +1,10 @@
+<input placeholder="search for location" type="text" #locationSearch />
+<agm-map [longitude]="longitude" [latitude]="latitude" [zoom]="11" [disableDefaultUI]="false" (mapClick)="mapClicked($event)">
+    <agm-marker [longitude]="longitude" [latitude]="latitude" [title]="'You are here'"></agm-marker>
+    <agm-marker *ngFor="let item of nearList" [longitude]="item.longitude" [latitude]="item.latitude"
+                [title]="item.name">
+        <agm-info-window>
+            <strong>InfoWindow content</strong>
+        </agm-info-window>
+    </agm-marker>
+</agm-map>

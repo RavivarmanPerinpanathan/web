@@ -1,0 +1,11 @@
+<h2>{{ title }}</h2>
+<hr>
+<div class="row">
+    <!-- List recomended event -->
+    <div *ngFor="let event of events">
+        <!-- Single event START -->
+        <div class="col s12 m3 l3">
+            <app-event-card [event]="event"></app-event-card>
+        </div>
+    </div>
+</div>

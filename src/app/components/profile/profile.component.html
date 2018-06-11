@@ -1,0 +1,117 @@
+
+   <div id="profile-page-header" class="card">
+    <div class="card-image waves-effect waves-block waves-light profile-back-card">
+        <img class="activator" src="http://www.planwallpaper.com/static/images/background_image_7.jpg" alt="user background">
+    </div>
+    <figure class="card-profile-image">
+        <img src="{{user?.picture}}" alt="profile image" class="circle z-depth-2 responsive-img activator">
+    </figure>
+    <div class="card-content">
+        <div class="row">
+            <div class="col s5 offset-s2">
+                <h4 class="card-title black-text text-darken-4">{{user?.username}}</h4>
+                <p class="medium-small black-text">{{user?.email}}</p>
+            </div>
+            <div class="col s1 right" *ngIf="isLoggedUser">
+                <a class="btn-floating activator waves-effect waves-light darken-2 right" (click)="editProfile()">
+                    <i class="material-icons">settings</i>
+                </a>
+            </div>
+            <!-- Display  rating starting -->
+      <div class="col s1 right " >
+        <button class="ratingbtn mat-icon-button" (click)="openRatingDialog()">
+          <i class="material-icons">star rate</i>
+        </button>
+      </div>
+      <!-- Display rating ending -->
+            <!-- Display pending friendlist starting -->
+
+            <div  class="col s1 right" *ngIf="isLoggedUser">
+              <!--p style="display: inline-flex;"class="col s1 right">Pendinng Friends </p-->
+                <button class="pendingfriends" (click)="pendingfriends()" md-icon-button [mdMenuTriggerFor]="pendingList">
+                    <i class="material-icons">person</i>
+                </button>
+                <md-menu #pendingList>
+                    <div class="chip clickableCursor" *ngFor="let pending of pendingFriendlist">
+                         <img src="{{pending.author.picture}}">{{pending.author.username}}
+                        <!--<li>{{pending.author.username}}</li> -->
+                      <i (click)="accept_friendsrequest(pending.id)"class="Tiny material-icons">check</i>
+                      <i (click)="remmove_friendrequest(pending.id)"class="Tiny material-icons">clear</i>
+                  </div>
+                  <br>
+              </md-menu>
+          </div>
+
+          <!-- Display pending friendlist ending -->
+
+
+        </div>
+
+    </div>
+</div>
+
+<div class="row">
+    <div class="col s12 m4">
+        <div class="card blue-grey darken-1 profile-box-height">
+            <h4 class="card-title white-text text-darken-4 two-card-new">
+              <!-- Deceleration of Runner Filled icon by Icons8 -->
+            Favorite Sports</h4>
+            <div class="card-content white-text">
+                <div class="row" *ngFor="let sport of user?.favorite_sports">
+                    <div class="col s12">
+                        <div class="center-align">
+                            {{ sport.name }}
+                        </div>
+                    </div>
+                </div>
+                <h5 *ngIf="user?.favorite_sports.length <= 0">
+                    None
+                </h5>
+
+            </div>
+        </div>
+    </div>
+      <!-- display friends starting -->
+    <div class="col s12 m4">
+        <div class="card blue-grey darken-1 profile-box-height">
+            <h4 class="card-title white-text text-darken-4 two-card-new">Friends</h4>
+          <div class = "card" style="overflow: auto; height: 135px;">
+          <div  *ngFor="let friend of friends">
+            <div class="chip clickableCursor"  >
+              <img src="{{friend.picture}}" (click)="goToUserProfile(friend)">{{friend.username}}
+              <i *ngIf="isLoggedUser" (click)="deletefriends(friend.id)"class="bruh material-icons">delete_forever</i>
+            </div>
+          </div>
+          </div>
+        </div>
+    </div>
+
+  <!-- display friends ending-->
+
+    <div class="col s12 m4" >
+        <div class="card blue-grey darken-1 profile-box-height">
+          <h4 class="card-title white-text text-darken-4 two-card-new"> Inventory</h4>
+          <button class="itembtn" (click)="openLocationDialog()"><i class="material-icons">library_add</i></button>
+          <div class = "card" style="overflow: auto; height: 135px;" >
+            <div class="chip clickableCursor" *ngFor="let item of items">
+              <img src="{{item.thumbnail}}">{{item.name}}
+              <i (click)="openEditLocationDialog(item.id)"class="bruh material-icons">edit</i>
+              <i (click)="remove_items(item.id)"class="bruh material-icons">delete_forever</i>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <md-tab-group (selectChange)="onSelectChange($event.tab.textLabel)">
+        <md-tab label="Events"></md-tab>
+        <md-tab label="Coachings"></md-tab>
+    </md-tab-group>
+    <app-swiper-event-list *ngIf="createdList?.length > 0"
+                           (loadMoreClicked)="loadMoreCreated()" [events]="createdList" [title]="'Created ' + currentResource">
+    </app-swiper-event-list><!---*ngIf="createdList?.length > 0"-->
+    <app-swiper-event-list class="registeredOnly" *ngIf="registeredList?.length > 0"
+                           (loadMoreClicked)="loadMoreRegistered()" [events]="registeredList" [title]="'Registered ' + currentResource">
+    </app-swiper-event-list><!---*ngIf="*ngIf="registeredList?.length > 0"-->
+</div>

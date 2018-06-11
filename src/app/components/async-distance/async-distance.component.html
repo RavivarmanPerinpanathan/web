@@ -1,0 +1,3 @@
+<span *ngIf="distanceHolder | distance : currentCoords; let distance">
+  : {{ distance }} <span *ngIf="distance === 'Unknown'" mdTooltip="We need access to your location to provide this information">?</span>
+</span>

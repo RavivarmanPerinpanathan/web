@@ -1,0 +1,21 @@
+
+<div id="cont" class="container">
+  <div *ngIf="!toSend2.name">
+    <h1 id="title">Inventory</h1>
+    <input mdInput placeholder="Name" name="name" type="text" [(ngModel)]="toSend.name" >
+    <textarea placeholder="Description"  [(ngModel)]="toSend.note"></textarea>
+    <input  name="thumbnail" appBase64convert name="thumbnail" class="label-file" placeholder="Picture" type="file" (applyConvertedImage)="toSend.thumbnail = $event" />
+    <input class="col s6"  placeholder="Price" type="number" min="1" [(ngModel)]="toSend.price" />
+    <!--<input class="col s6"  placeholder="quantity" type="number" min="1" [(ngModel)]="toSend.quantity" />-->
+    <button md-raised-button color="primary" (click)="additems()">Submit</button>
+  </div>
+  <div *ngIf="toSend2.name">
+    <h1 id="title">Edit inventory</h1>
+    <input mdInput placeholder="Name" name="name" type="text" [(ngModel)]="toSend2.name" >
+    <textarea placeholder="Description"  [(ngModel)]="toSend2.note"></textarea>
+    <input  name="thumbnail" appBase64convert name="thumbnail" class="label-file" placeholder="Picture" type="file" (applyConvertedImage)="toSend2.thumbnail = $event" />
+    <input class="col s6"  placeholder="Price" type="number" min="1" [(ngModel)]="toSend2.price" />
+    <!--<input class="col s6"  placeholder="quantity" type="number" min="1" [(ngModel)]="toSend.quantity" />-->
+    <button md-raised-button color="primary" (click)="editItems()">Submit</button>
+  </div>
+</div>

@@ -1,0 +1,163 @@
+.btn-floating i{
+    color: black !important;
+}
+
+.btn-floating {
+    background-color: #b1c0bb;
+    border-radius: 50%;
+}
+
+.card .card-content .card-title {
+text-transform: capitalize;
+}
+
+
+.blue-grey.darken-1 {
+   background-color: rgb(160, 163, 165) !important;
+}
+
+.profile-box-height {
+    /*height: 30vh !important;*/
+    height: 200px !important;
+}
+
+.profile-back-card img {
+    border-radius: 2px 2px 0 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.card-profile-image {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    z-index: 1;
+    left: 40px;
+    cursor: pointer;
+    margin: 0;
+    top: 18px;
+    border-radius: 5% !important;
+}
+
+.card-profile-image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+     border-radius: 5% !important;
+}
+
+.two-card-new{
+    text-align: center; 
+    padding-top: 15px;
+}
+
+.row{
+    position: relative;
+    top: -25px;
+    color: black;
+}
+
+.profile-back-card[_ngcontent-c17] {
+    height: 0px !important;
+}
+
+.card-profile-image[_ngcontent-c17] {
+    width: 110px;
+    position: absolute;
+    top: 20px !important;
+    z-index: 1;
+    left: 40px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.itembtn{
+    float: right;
+    position: relative;
+    border: none;
+    top: -45px;
+    background-color: #d9dcdf;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    right: 10px;
+}
+
+.circle{
+    border-radius: unset !important;
+}
+
+.cdk-overlay-pane{
+    pointer-events: unset !important;
+    top: unset !important;
+    right: unset !important;
+    position: relative;
+    float: right;
+}
+
+.ratingbtn {
+    width: 40px;
+    margin-left: 62px;
+    float: right;
+}
+
+.pendingfriends{
+    background: #b1c0bb;
+    border-radius: unset !important;
+    float: right !important;
+}
+
+.ratingbtn{
+ background: #b1c0bb;
+    border-radius: unset !important;
+    float: right !important;   
+}
+
+.ratingbtn{
+ background: #b1c0bb;
+    border-radius: unset !important;
+    float: right !important;   
+}
+
+.ratingbtn{
+    border-radius: 50% !important;
+}
+
+.ratingbtn .material-icons{
+   
+        top: 7px;
+    position: relative;
+    left: 8px;
+}
+
+.pendingfriends{
+    border-radius: 50% !important;
+}
+
+.clickableCursor {
+    cursor: pointer;
+    border-radius: 0% !important;
+    background-color: #ffdead00 !important;
+    margin-left: 10px;
+}
+
+.bruh{
+    position: relative;
+    top: 5px;
+    float: left;
+}
+
+.bruh:hover{
+    color:#991b1b;
+}
+
+.row .col.offset-s2 {
+    margin-left: 16.6666666667%;
+    position: relative !important;
+    top: 35px !important;
+}
+

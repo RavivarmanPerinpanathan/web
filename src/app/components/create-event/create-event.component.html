@@ -1,0 +1,42 @@
+
+
+<div  *ngIf="eventType ; else selectType" style="height: 500px !important;">
+    <h3>{{ editMode ? "Edit" : "Create"}} {{ eventType }}</h3>
+    <button *ngIf="!editMode" color="primary" (click)="eventType = null">change</button>
+    <div class="row">
+        <input class="col s9" placeholder="Name" type="text" [(ngModel)]="toSend.name" />
+        <md-select class="col s3" placeholder="Sport" [(ngModel)]="toSend.sport">
+            <md-option *ngFor="let sport of sports" [value]="sport.id">
+                {{ sport.name }}
+            </md-option>
+        </md-select>
+    </div>
+    <textarea placeholder="Description" [(ngModel)]="toSend.description"></textarea>
+    <div class="row noMargin">
+        <input class="col s4" placeholder="Date" [min-date]="maxDate" [min-hour]="maxDate.getHours()" [(ngModel)]="tmpDate" ngui-datetime-picker />
+        <div class="col s4">
+            <input class="col s6" *ngIf="!noPlaceLimit" placeholder="Places" pattern="[0-9]" type="number" min="1" [(ngModel)]="toSend.places"  />
+            <md-checkbox class="col s6" [(ngModel)]="noPlaceLimit">No limit</md-checkbox>
+        </div>
+        <div class="col s4" *ngIf="eventType === 'Coaching'">
+            <input class="col s6" *ngIf="!isFree" placeholder="Price" type="number" min="1" [(ngModel)]="toSend.price" />
+            <md-checkbox class="col s6" [(ngModel)]="isFree">Free</md-checkbox>
+        </div>
+    </div>
+
+
+
+    <input  name="picture" appBase64convert placeholder="Picture" type="file" (applyConvertedImage)="toSend.picture = $event" />
+
+
+    <app-map [startingLocation]="startingLocation" (locationSelected)="locationSelected($event)"></app-map>
+    <button md-raised-button color="primary" (click)="post()">Submit</button>
+</div>
+<ng-template #selectType>
+    <button md-raised-button color="primary" (click)="initType('Event')">
+        Event
+    </button>
+    <button md-raised-button color="primary" (click)="initType('Coaching')">
+        Coaching
+    </button>
+</ng-template>

@@ -1,0 +1,128 @@
+.card .card-image .card-title {
+    color: white;
+    position: absolute !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: unset !important;
+    max-width: 100%;
+    padding-right: 5px !important;
+    padding-bottom: 0% !important;
+    font-size: 15px;
+    text-transform: uppercase;
+}
+
+.card .card-image {
+    border: 2px solid white;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.card .card-image:hover {
+    box-shadow: 0 0 2px 1px #C0C0C0;
+}
+
+button.col.s2 {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    border: none;
+    background-color: transparent;
+    color: #C0C0C0;
+}
+
+button.col.s2:hover {
+    color: #3b5998;
+    box-shadow: 0 0 2px 1px none;
+}
+
+.card.small {
+    height: 460px;
+}
+
+.material-icons {
+    margin-top: 0px;
+    position: relative;
+    top: 4px;
+}
+
+.mat-mini-fab i{
+    padding: 0px !important;
+}
+
+.inlinef{
+    padding-right: 2%;
+
+}
+.checkboxx{
+    margin-left: 5%;
+    margin-right: -5%;
+}
+
+.mat-raised-button.mat-primary {
+    background-color: #3b5998 !important;
+    /* background-color: forestgreen; */
+    border-radius: 25px !important;
+    box-shadow: 1px 1px 12px #555 !important;
+    width: 16% !important;
+    padding-bottom: 18px;
+}
+
+.pagination li.active {
+    background-color: #3b5998;
+}
+
+.inlinef {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    /* display: inline-flex; */
+}
+
+input:not([type]), input[type=text]:not(.browser-default), 
+                    input[type=password]:not(.browser-default), 
+                    input[type=email]:not(.browser-default), 
+                    input[type=url]:not(.browser-default), 
+                    input[type=time]:not(.browser-default), 
+                    input[type=date]:not(.browser-default), 
+                    input[type=datetime]:not(.browser-default), 
+                    input[type=datetime-local]:not(.browser-default), 
+                    input[type=tel]:not(.browser-default), 
+                    input[type=number]:not(.browser-default), 
+                    input[type=search]:not(.browser-default), 
+                    textarea.materialize-textarea {
+}
+
+.mat-tab-group{
+    padding: 40px;
+}
+
+.row{
+margin-top: 70px;
+}
+
+.recherche {
+    position: relative;
+   bottom: 12px;
+    width: 200px;
+    height: 50px;
+    float: right;
+         margin-right: 25px;
+   
+}
+
+#seachbtn
+ {
+min-width: 150px;
+position: relative;
+float: right;
+height: 50px !important;
+border-radius: 5px !important;
+    box-shadow: unset !important;
+    background-color: #5f6176 !important;
+
+ }
+
+.seachtools{
+    position: relative;
+    width: 100%;
+    margin-left: 50px;
+}

@@ -1,0 +1,25 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { GenericConfirmationDialogComponent } from './generic-confirmation-dialog.component';
+
+describe('GenericConfirmationDialogComponent', () => {
+  let component: GenericConfirmationDialogComponent;
+  let fixture: ComponentFixture<GenericConfirmationDialogComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [ GenericConfirmationDialogComponent ]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(GenericConfirmationDialogComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should be created', () => {
+    expect(component).toBeTruthy();
+  });
+});

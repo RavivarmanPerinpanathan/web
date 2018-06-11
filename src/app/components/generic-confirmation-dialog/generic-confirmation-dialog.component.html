@@ -1,0 +1,6 @@
+<h4>{{ data.message }}</h4>
+<div class="inlinef">
+    <button *ngFor="let a of data.answers" [color]="a.color" md-raised-button (click)="answerIs(a.text)">
+        {{ a.text }}
+    </button>
+</div>
