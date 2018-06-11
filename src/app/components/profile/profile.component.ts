@@ -46,7 +46,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     totalScore: number;
     score ;
     toSend: any;
-    datarent: Array<any>;
+    public datarent: Array<any>;
     public Id_friend;
     public Id_friend2;
     private serviceList = {
@@ -98,6 +98,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
           this.getCreatedList();
           this.getRegisteredList();
           //this.getEval();
+          //this.test();
         });
 
     }
@@ -151,9 +152,25 @@ export class ProfileComponent implements OnInit, OnDestroy {
       if (!this.isLoggedUser) {
         return ;
       }
-      this.display_items();
-     this.getRentId(id);
+      //this.display_items();
+     //this.getRentId(id);
       console.log(this.datarent);
+      this.rentsService.get_a_rent(id).subscribe(data =>{this.datarent = data; this.dialog.open(AddLocationComponent, {data: this.datarent})
+        .afterClosed().subscribe((result) => {
+        console.log(result);
+        this.display_items();
+      });})
+      /*this.dialog.open(AddLocationComponent, {data: this.datarent})
+        .afterClosed().subscribe((result) => {
+        console.log(result);
+        this.display_items();
+      });*/
+    //  this.test(id);
+    }
+
+    test(id) {
+      console.log(this.datarent);
+      this.getRentId(id);
       this.dialog.open(AddLocationComponent, {data: this.datarent})
         .afterClosed().subscribe((result) => {
         console.log(result);
@@ -306,12 +323,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
     remove_items(id){
       this.rentsService.deleterent(id).subscribe(data => console.log(data));
       this.display_items();
+      console.log("remove cet item id =" + id);
       //this.toaster.pop("success", "Item successfully deleted");
     }
 
     getRentId(id){
       this.rentsService.get_a_rent(id).subscribe(data =>{this.datarent = data;});
-      this.display_items();
+      //this.display_items();
     }
 
     /*getEval(){
