@@ -84,7 +84,7 @@ export class EventDetailComponent implements OnInit {
     console.log(this.toShow);
   }
 
- 
+
 
   deleteItem() {
 
@@ -238,6 +238,7 @@ export class EventDetailComponent implements OnInit {
   display_Rentable_items(){
     this.rentsService.getRentableItemsListtoEvent(this.data.id).subscribe(data =>{this.items2 = data;});
     //console.log(this.items2["rents"][0]["rent"]);
+    console.log("dans retable item");
     console.log(this.items2);
     for (let i = 0; i < this.items2["rents"].length; i++) {
       this.rentable_items[i] = this.items2["rents"][i];

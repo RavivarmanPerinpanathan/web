@@ -28,7 +28,7 @@ export class NotifService {
 
     let observable = new Observable(observer => {
 
-      this.socket = io(ApiConstants.REALTIME_ENDPOINT, {
+      this.socket = io(ApiConstants.CHAT_ENDPOINT, {
         transportOptions: {
           polling: {
             extraHeaders: {
@@ -38,7 +38,7 @@ export class NotifService {
           }
         }
       });
-      this.socket.on('newEvent', (data) => {
+      this.socket.on('notification', (data) => {
         //console.log(data);
         observer.next(data);
       });

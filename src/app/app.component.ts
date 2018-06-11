@@ -60,12 +60,14 @@ export class AppComponent implements OnInit, OnDestroy {
                 this.isLogged = logValue;
                 this.currentUser = this.userService.currentUser;
             });
+            console.log("Avant notif");
       this.connection = this.notifService.getMessages().subscribe(message => {
         this.messages.push(message);
-        for (let i = 0; i < this.messages[i]["message"].length; i++) {
+        /*for (let i = 0; i < this.messages[i]["message"].length; i++) {
           this.msg[i] = this.messages[i]["message"];
           console.log(this.msg);
-        }
+        }*/
+        console.log("Dans notif");
         console.log(this.messages[0]["message"]);
         console.log(message);
       })
