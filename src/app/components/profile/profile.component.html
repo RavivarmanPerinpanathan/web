@@ -45,9 +45,9 @@
           </div>
 
           <!--ADD ami depuis leur profil -->
-            <div class="col s1 right " >
+            <div class="col s1 right " *ngIf="!isLoggedUser">
               <button class="ratingbtn mat-icon-button" (click)="addfriends()">
-                <i class="material-icons">add</i>
+                <i class="material-icons" style="left: 0px;">add</i>
               </button>
 
           <!-- Display pending friendlist ending -->
@@ -102,10 +102,10 @@
           <h4 class="card-title white-text text-darken-4 two-card-new"> Inventory</h4>
           <button class="itembtn" (click)="openLocationDialog()"><i class="material-icons">library_add</i></button>
           <div class = "card" style="overflow: auto; height: 135px;" >
-            <div class="chip clickableCursor" *ngFor="let item of items">
+            <div class="chip clickableCursor" *ngFor="let item of items" >
               <img src="{{item.thumbnail}}">{{item.name}}
-              <i (click)="openEditLocationDialog(item.id)"class="bruh material-icons">edit</i>
-              <i (click)="remove_items(item.id)"class="bruh material-icons">delete_forever</i>
+              <i *ngIf="isLoggedUser" (click)="openEditLocationDialog(item.id)"class="bruh material-icons">edit</i>
+              <i *ngIf="isLoggedUser" (click)="remove_items(item.id)"class="bruh material-icons">delete_forever</i>
             </div>
           </div>
         </div>
