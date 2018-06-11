@@ -44,7 +44,7 @@ export class ManageFriendsService  {
   reject_friend_request(friendId) {
 
     //const url = `${ApiConstants.API_ENDPOINT}/user/me/reject/request/{friendId}`;
-      const url = `http://163.5.84.210/api/user/me/reject/request/{friendId}`;
+      const url = `http://163.5.84.210/api/user/me/reject/request/${friendId}`;
     return this.http.get(url, {headers: this.userService.getUserHeaders()})
         .map(response => {
           return response.json();

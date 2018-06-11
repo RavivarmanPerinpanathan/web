@@ -47,6 +47,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     score ;
     toSend: any;
     datarent: Array<any>;
+    public Id_friend;
+    public Id_friend2;
     private serviceList = {
         "Events": this.eventService,
         "Coachings": this.coachingService
@@ -96,6 +98,19 @@ export class ProfileComponent implements OnInit, OnDestroy {
           //this.getEval();
         });
 
+    }
+    addfriends(){
+      console.log("ID du futur ami dans profil= " + this.Id_friend);
+      //console.log("user id currentuser= " + this.userService.currentUser.id);
+      this.display_friends(this.Id_friend2);
+      this.manageFriendsService.requestfriend(this.Id_friend).subscribe((response) => {
+        this.toaster.pop("success", "request succefully send");
+        this.display_friends(this.Id_friend2);
+      }, (error) => {
+
+        console.log(error);
+        this.toaster.pop("error", "request already send");
+      });;
     }
 
     editProfile() {
