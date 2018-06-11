@@ -88,11 +88,13 @@ export class ProfileComponent implements OnInit, OnDestroy {
                       console.log("param.id :" + params.id);
                       console.log("user.id :" + this.user.id);
                     });
+              this.Id_friend = params.id;
               this.display_friends(params.id);//affiche auto amis
             }
           //console.log("param.id2 :" + params.id);
           //console.log("user.id2 :" + this.user.id);
           this.display_items(); // affiche items
+          this.display_friends(params.id);
           this.getCreatedList();
           this.getRegisteredList();
           //this.getEval();

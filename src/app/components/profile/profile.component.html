@@ -22,7 +22,9 @@
         <button class="ratingbtn mat-icon-button" (click)="openRatingDialog()">
           <i class="material-icons">star rate</i>
         </button>
+
       </div>
+
       <!-- Display rating ending -->
             <!-- Display pending friendlist starting -->
 
@@ -41,6 +43,12 @@
                   <br>
               </md-menu>
           </div>
+
+          <!--ADD ami depuis leur profil -->
+            <div class="col s1 right " >
+              <button class="ratingbtn mat-icon-button" (click)="addfriends()">
+                <i class="material-icons">add</i>
+              </button>
 
           <!-- Display pending friendlist ending -->
 
@@ -108,10 +116,13 @@
         <md-tab label="Events"></md-tab>
         <md-tab label="Coachings"></md-tab>
     </md-tab-group>
+    <div *ngIf="isLoggedUser">
     <app-swiper-event-list *ngIf="createdList?.length > 0"
                            (loadMoreClicked)="loadMoreCreated()" [events]="createdList" [title]="'Created ' + currentResource">
     </app-swiper-event-list><!---*ngIf="createdList?.length > 0"-->
+    </div>
     <app-swiper-event-list class="registeredOnly" *ngIf="registeredList?.length > 0"
                            (loadMoreClicked)="loadMoreRegistered()" [events]="registeredList" [title]="'Registered ' + currentResource">
     </app-swiper-event-list><!---*ngIf="*ngIf="registeredList?.length > 0"-->
+</div>
 </div>
