@@ -51,6 +51,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     public Id_friend2;
     public Id_user;
     toto;
+    titi;
     private serviceList = {
         "Events": this.eventService,
         "Coachings": this.coachingService
@@ -292,7 +293,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
     accept_friendsrequest(id){
-        this.manageFriendsService.accept_friend_request(id).subscribe(data => console.log(data));
+        this.manageFriendsService.accept_friend_request(id).subscribe(data => {this.titi = data;this.manageFriendsService.displayfriends(this.Id_user).subscribe(data =>{this.friends = data;})});
+        this.manageFriendsService.displayfriends(id).subscribe(data =>{this.friends = data;});
+
         this.toaster.pop("success", "Friend successfully added");
     }
 
