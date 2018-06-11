@@ -49,6 +49,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
     public datarent: Array<any>;
     public Id_friend;
     public Id_friend2;
+    public Id_user;
+    toto;
     private serviceList = {
         "Events": this.eventService,
         "Coachings": this.coachingService
@@ -77,6 +79,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
                 // TODO change this
                 this.user.favorite_sports = this.user.favorite_sports.slice(0, 3);
               this.display_friends(this.user.id);//affiche auto amis
+                this.Id_user = this.user.id
+              this.manageFriendsService.displayfriends(this.user.id).subscribe(data =>{this.friends = data;});
 
             }
             else {
@@ -90,10 +94,12 @@ export class ProfileComponent implements OnInit, OnDestroy {
                     });
               this.Id_friend = params.id;
               this.display_friends(params.id);//affiche auto amis
+              this.manageFriendsService.displayfriends(params.id).subscribe(data =>{this.friends = data;});
             }
           //console.log("param.id2 :" + params.id);
           //console.log("user.id2 :" + this.user.id);
           this.display_items(); // affiche items
+          this.rentsService.getMyrents().subscribe(data =>{this.items = data;});
           this.display_friends(params.id);
           this.getCreatedList();
           this.getRegisteredList();
@@ -165,17 +171,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
         console.log(result);
         this.display_items();
       });*/
-    //  this.test(id);
-    }
-
-    test(id) {
-      console.log(this.datarent);
-      this.getRentId(id);
-      this.dialog.open(AddLocationComponent, {data: this.datarent})
-        .afterClosed().subscribe((result) => {
-        console.log(result);
-        this.display_items();
-      });
     }
 
     onSelectChange = (resourceName: string): void => {
@@ -308,7 +303,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
     }
 
     deletefriends(id){
-        this.manageFriendsService.remove_friend(id).subscribe(data => console.log(data));
+        this.manageFriendsService.remove_friend(id).subscribe(data =>{this.toto = data;this.manageFriendsService.displayfriends(this.Id_user).subscribe(data =>{this.friends = data;})});
+        //this.manageFriendsService.displayfriends(this.Id_user).subscribe(data =>{this.friends = data;});
+        //this.manageFriendsService.displayfriends(this.Id_user).subscribe(data =>{this.friends = data;});
         this.toaster.pop("success", "Friend successfully deleted");
     }
 
