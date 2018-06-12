@@ -85,13 +85,13 @@ form .mat-input-infix .mat-input-element {
     background-color: #d9dcdf;
 }
 
- .mat-raised-button.mat-primary  
+ .mat-raised-button.mat-primary
 {
     background-color: #157115;
 }
 
 
-h3 {  
+h3 {
     text-align: center;
 }
 
@@ -125,7 +125,7 @@ h2{
         text-align: center;
     font-size: x-large;
     color: rgba(0, 0, 0, 0.46);
-    
+
 }
 
 .card .card-image img {
@@ -171,7 +171,7 @@ h2{
 
 .white-text{
         margin-top: 30px;
-   
+
 }
 
 .card .card-title{
@@ -192,7 +192,7 @@ h2{
 
 .mat-sidenav-transition .mat-sidenav-content{
   background-color: #fafafa;
-    
+
 }
 
 .card.small .card-action, .card.medium .card-action, .card.large .card-action{
@@ -214,8 +214,8 @@ h2{
 
       margin-top: -11px;
     border: none !important;
-    
-  
+
+
 }
 
 .row .col.m6{
@@ -233,7 +233,7 @@ h2{
 .blue-grey.darken-1[_ngcontent-c7]{
     background-color: #3e5b99 ;
     border-radius: 0%;
-    
+
 }
 
 .grey-text.text-darken-4{
@@ -294,19 +294,19 @@ hr{
 ::-webkit-scrollbar {
     width: 12px;
 }
- 
+
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     border-radius: 10px;
 }
- 
+
 ::-webkit-scrollbar-thumb {
     border-radius: 10px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
 
 .mat-select-trigger {
-   
+
     bottom: -9px !important;
     position: relative !important;
 }
@@ -353,11 +353,12 @@ hr{
 }
 
 
+
 /*
 .mat-dialog-container{
     max-height: 600px;
     max-width: 90vw !important;
-    padding: 0px 10px 10px 10px !important; 
+    padding: 0px 10px 10px 10px !important;
     border-radius: 0px !important;
 }
 >>>>>>> 52a7a0dd7e0690f7020cd3266f415a9f1d7e7561

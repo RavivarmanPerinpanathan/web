@@ -29,7 +29,7 @@ export class ChatService {
 
     getMessages(chatId: number): Observable<Sport[]> {
 
-        const url = `${ApiConstants.API_ENDPOINT}/chats/${chatId}/message`;
+        const url = `${ApiConstants.API_ENDPOINT}/chats/${chatId}/messages`;
         return this.http.get(url, {headers: this.userService.getUserHeaders()})
             .map(response => {
 
@@ -38,8 +38,8 @@ export class ChatService {
                 response.json().forEach(function (value: Object) {
                     chatList.push(new Chat().deserialize(value));
                 });
-                console.log(chatList);
-                return chatList;
+                console.log(response.json());
+                return response.json();
             })
     }
 

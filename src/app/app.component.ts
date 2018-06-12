@@ -6,6 +6,7 @@ import {ToasterConfig} from "angular2-toaster";
 import {EventService} from "./services/event.service";
 import {CoachingService} from "./services/coaching.service";
 import {NotifService} from "./services/notification.service";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-root',
@@ -33,7 +34,7 @@ export class AppComponent implements OnInit, OnDestroy {
     msg = [];
 
     constructor(private userService: UserService
-        , private etest: EventService, private ctest: CoachingService, private notifService:NotifService) {
+        , private etest: EventService, private ctest: CoachingService, private notifService:NotifService, private router:Router) {
     }
 
     logout(): void {
@@ -47,7 +48,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
     notif() : void {
       console.log(this.messages);
-
+      this.router.navigate(['/profile', this.currentUser]);
     }
 
     ngOnInit(): void {
@@ -67,6 +68,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.msg[i] = this.messages[i]["message"];
           console.log(this.msg);
         }*/
+        console.log(message);
         console.log("Dans notif");
         console.log(this.messages[0]["message"]);
         console.log(message);

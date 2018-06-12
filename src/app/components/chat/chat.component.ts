@@ -16,9 +16,11 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnDestroy {
 
     chats: Chat[] = [];
     messages = {};
-    //chatMessages: Chat[] = [];
+    chatMessages: Chat[] = [];
     chatUserID = 0;
     socket: any = null;
+    test = [];
+
     @ViewChild('scrollMe') private myScrollContainer: ElementRef;
     @ViewChild('inputMessage') private myMessage: ElementRef;
 
@@ -104,8 +106,10 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnDestroy {
         }, (error) => console.error(error));
     };
 
-   /* getMessages = () => {
-        this.chatService.getMessages(47).subscribe((chatList: Chat[]) => {
+  /*  getMessages = () => {
+      console.log("je suis dans getMessage");
+        this.chatService.getMessages(62).subscribe((chatList: Chat[]) => {
+
 
             this.chatMessages = chatList;
 
@@ -116,10 +120,12 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnDestroy {
             console.log(chatList);
             console.log("hello");
         }, (error) => console.error(error));
-    };
-*/
+    };*/
+
+
     sendMessage = (inputMessageElement: any, chatId: number) => {
 
+        console.log("je suis dans sendMessage");
         //console.log(chatId);
         if (inputMessageElement.value) {
 
@@ -131,5 +137,22 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnDestroy {
             inputMessageElement.value = '';
         }
     }
+    toto(id){
+      this.chatService.getMessages(id).subscribe((chatList: Chat[]) => {
+
+
+          this.chatMessages = chatList;
+
+          chatList.forEach((value) => {
+
+              this.messages[value.id] = [];
+          });
+          console.log(chatList);
+          console.log("hello");
+      });
+      //console.log(chatList);
+
+    }
+
 
 }
