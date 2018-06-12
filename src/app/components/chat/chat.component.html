@@ -32,7 +32,14 @@
     </div>
     <div class="chatConv" #currentChat [hidden]="true">
         <div class="chatMessageList" #scrollMe>
+          <button (click)="chatHistory(chat.id)">load old messages </button>
+          <p *ngFor="let hist of chatMessages">
+              <span> {{hist.author.username}} </span>
+              <span>{{hist.message}}</span>
+
+          </p>
             <p *ngFor="let post of messages[chat.id]">
+
                 <span *ngIf="this.chatUserID == post.author.id; else elseBlock" style="color:green !important;">
                     {{ post.toString() }}
                     <!--p *ngFor="let chatMessage of chatMessages[chat.id]">
@@ -45,7 +52,6 @@
         <div class="chatMessageSend">
             <input type="text" #inputMessage placeholder="Type something"/>
             <button class="btn" (click)="sendMessage(inputMessage, chat.id)"><p>Send<p></button>
-            <button class="btn" (click)="toto(chat.id)"><p>Get<p></button>
         </div>
 
         <br>
