@@ -41,7 +41,10 @@
             <p *ngFor="let post of messages[chat.id]">
 
                 <span *ngIf="this.chatUserID == post.author.id; else elseBlock" style="color:green !important;">
-                    {{ post.toString() }}
+                    
+                    <span>{{post.author.username}} : {{post.message}}</span>
+                    <br>
+                    <span>{{post.updated_at}}</span>
                     <!--p *ngFor="let chatMessage of chatMessages[chat.id]">
                         {{chatMessage.toString()}}
                     </p-->
