@@ -42,8 +42,9 @@
          <i  id="notif" class="material-icons">new_releases</i>
           <md-select style="opacity: 0;" class="col s3" [(ngModel)]="current">
 
-            <!-- <md-option (click)="notif()" *ngFor="let message of messages" >{{message.message}}</md-option> ------>
-             <md-option (click)="notif()" *ngFor="let message of messages" >{{"You have a new friend request"}}</md-option>
+            <md-option (click)="notif()" *ngFor="let message of messages" >{{message.message}}</md-option>
+             <!--md-option (click)="notif()" *ngFor="let message of messages" >{{"You have a new friend request"}}</md-option-->
+
            </md-select>
 
 

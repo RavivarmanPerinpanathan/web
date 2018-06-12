@@ -137,7 +137,7 @@ export class ChatComponent implements OnInit, AfterViewChecked, OnDestroy {
             inputMessageElement.value = '';
         }
     }
-    toto(id){
+    chatHistory(id){
       this.chatService.getMessages(id).subscribe((chatList: Chat[]) => {
           this.chatMessages = chatList;
           chatList.forEach((value) => {
